@@ -1,77 +1,74 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-var ITALY = {
-  "Emilia-Romagna": {
-    "Parma": ["Borgotaro", "Sorbolo", "Langhirano", "Fidenza", "Traversetolo"],
-    "Bologna": ["Valsamoggia", "Imola", "Camugano", "Bologna"],
-    "Rimini": ["Rimini", "Riccione", "San Leo", "Mondaino"]    
-  },
-  "Toscana": {
-    "Firenze": ["Firenzuola", "Firenze", "Montaione"],
-    "Livorno": ["Capraia", "San Vincenzo", "Sassetta"]
-  }
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-window.onload = function() {
-  var acquisisciRegione = document.getElementById("regione");
-  var acquisisciProvincia = document.getElementById("provincia");
-  var acquisisciComune = document.getElementById("comune");
-
-
-  for (var x in ITALY) {
-    acquisisciRegione.options[acquisisciRegione.options.length] = new Option(x, x);
-  }
-
-
-
-
-  acquisisciRegione.onchange = function() {
-    //svuoto i dropdown del comune e della provincia
-    acquisisciComune.length = 1;
-    acquisisciProvincia.length = 1;
-    //rimostra attraverso la mia scelta i dropdown specifici per quella regione
-    for (var y in ITALY[this.value]) {
-      acquisisciProvincia.options[acquisisciProvincia.options.length] = new Option(y, y);
-    }
-  }
-
-
-  acquisisciProvincia.onchange = function() {
-    //svuoto il dropdown della provincia
-    acquisisciComune.length = 1;
-    //e rimostra le provoncie corretteper quel comune
-    var z = ITALY[acquisisciRegione.value][this.value];
-    for (var i = 0; i < z.length; i++) {
-      acquisisciComune.options[acquisisciComune.options.length] = new Option(z[i], z[i]);
-    }
-  }
-
-
-}
-</script>
-</head>   
 <body>
 
 
 
-<form name="form1" id="form1">
-Regione: <select name="regione" id="regione">
-    <option value="" selected="selected">Seleziona regione</option>
-  </select>
-  <br><br>
-Provincie: <select name="provincia" id="provincia">
-    <option value="" selected="selected">Seleziona provincia</option>
-  </select>
-  <br><br>
-Comuni: <select name="comune" id="comune">
-    <option value="" selected="selected">Seleziona comune</option>
-  </select>
-  <br><br>
-  
-</form>
+  <form name="form1" id="form1">
+    Regione: <select name="regione" id="regione">
+      <option value="" selected="selected">Seleziona regione</option>
+    </select>
+    <br><br>
+    Provincie: <select name="provincia" id="provincia">
+      <option value="" selected="selected">Seleziona provincia</option>
+    </select>
+    <br><br>
+    Comuni: <select name="comune" id="comune">
+      <option value="" selected="selected">Seleziona comune</option>
+    </select>
+    <br><br>
 
+  </form>
+  <script>
+    var ITALY = {
+      "Emilia-Romagna": {
+        "Parma": ["Borgotaro", "Sorbolo", "Langhirano", "Fidenza", "Traversetolo"],
+        "Bologna": ["Valsamoggia", "Imola", "Camugano", "Bologna"],
+        "Rimini": ["Rimini", "Riccione", "San Leo", "Mondaino"]
+      },
+      "Toscana": {
+        "Firenze": ["Firenzuola", "Firenze", "Montaione"],
+        "Livorno": ["Capraia", "San Vincenzo", "Sassetta"]
+      }
+    }
+
+    window.onload = function () {
+      var acquisisciRegione = document.getElementById("regione");
+      var acquisisciProvincia = document.getElementById("provincia");
+      var acquisisciComune = document.getElementById("comune");
+
+      for (var x in ITALY) {
+        acquisisciRegione.options[acquisisciRegione.options.length] = new Option(x, x);
+      }
+
+      acquisisciRegione.onchange = function () {
+        //svuoto i dropdown del comune e della provincia
+        acquisisciComune.length = 1;
+        acquisisciProvincia.length = 1;
+        //rimostra attraverso la mia scelta i dropdown specifici per quella regione
+        for (var y in ITALY[this.value]) {
+          acquisisciProvincia.options[acquisisciProvincia.options.length] = new Option(y, y);
+        }
+      }
+
+      acquisisciProvincia.onchange = function () {
+        //svuoto il dropdown della provincia
+        acquisisciComune.length = 1;
+        //e rimostra le provoncie corretteper quel comune
+        var z = ITALY[acquisisciRegione.value][this.value];
+        for (var i = 0; i < z.length; i++) {
+          acquisisciComune.options[acquisisciComune.options.length] = new Option(z[i], z[i]);
+        }
+      }
+
+
+    }
+  </script>
 </body>
+
 </html>
